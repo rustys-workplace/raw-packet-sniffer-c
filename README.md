@@ -15,19 +15,7 @@ A high-performance, low-level network analyzer built from scratch in C. This too
 ---
 
 ## 🛠️ Architecture Blueprint
-[ Network Interface Card (wlo1 / usb0) ]
-                      |
-                      v  (Promiscuous Mode enabled via ioctl)
-         [ Layer 2: struct ethhdr ]
-                      |
-                      v  (Filter out non-IPv4 traffic)
-          [ Layer 3: struct iphdr ]
-                      |
-                      v  (Pointer shift via IHL calculation)
-         [ Layer 4: struct tcphdr ]
-                      |
-                      v  (Filter out UDP/ICMP, read flags)
-         [ Raw Payload Forensics Engine ] -> Hex/ASCII Grid
+[ Network Interface Card (wlo1 / usb0) ] -> (Promiscuous Mode enabled via ioctl) -> [ Layer 2: struct ethhdr ] -> (Filter out non-IPv4 traffic) -> [ Layer 3: struct iphdr ] -> (Pointer shift via IHL calculation) -> [ Layer 4: struct tcphdr ] -> (Filter out UDP/ICMP, read flags) -> [ Raw Payload Forensics Engine ] -> Hex/ASCII Grid
 ---
 
 ## 📋 System Requirements
